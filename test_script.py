@@ -8,7 +8,7 @@ import pytest
 
 def test_google_search():
     # 指定 ChromeDriver 的路径
-    driver_path = r"D:\chromedriver-win64\chromedriver.exe"  # 替换成你的实际路径
+    driver_path = r"D:\chromedriver-win64\chromedriver.exe" 
     
     options = Options()
 
