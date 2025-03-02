@@ -10,6 +10,7 @@ def test_google_search():
     # 指定 ChromeDriver 的路径
     driver_path = r"D:\chromedriver-win64\chromedriver.exe" 
     
+    # 解决浏览器流量异常提示问题
     options = Options()
 
     # 1. 让 navigator.webdriver = False
@@ -19,14 +20,12 @@ def test_google_search():
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option("useAutomationExtension", False)
 
-    # 启动 WebDriver
-    driver = webdriver.Chrome(options=options)
 
     # 3. 运行 JavaScript 代码隐藏 Selenium 特征（必须在访问目标网站之前执行）
-    driver.execute_script("""
-        Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
-        WebGLRenderingContext.prototype.getParameter = function() { return "fake_value"; };
-    """)
+    #driver.execute_script("""
+    #    Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+    #    WebGLRenderingContext.prototype.getParameter = function() { return "fake_value"; };
+    #""")
 
     # 使用 Service 类指定驱动路径
     service = Service(driver_path)
